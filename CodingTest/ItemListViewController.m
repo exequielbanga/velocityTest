@@ -190,14 +190,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	// ASADO: Desselecciono la celda
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-	// ASADO: Size classes: Llamo al showDetail y no me importa si es iPad o no
+
 	self.itemDetailViewController.detailItem = self.itemPaginator.items[indexPath.row];
-	[self showDetailViewController:self.itemDetailViewController sender:nil];
-//	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-//        self.itemDetailViewController.detailItem = self.itemPaginator.items[indexPath.row];
-//	}
+
+    
+    [self showDetailViewController:[self.splitViewController.viewControllers lastObject] sender:nil];
+
 }
 
 #pragma mark - SearchBar

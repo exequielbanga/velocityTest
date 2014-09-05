@@ -13,10 +13,8 @@
 /*!
  *  @brief  This view controller will display a list of items
  */
-// ASADO: Cambiaria el nombre por ItemListViewContorller
 @interface ItemListViewController : UITableViewController
 
-// ASADO: Cambiaria el nombre de la variable por itemDetailViewController
 /*!
  *  @brief  View controller that will display an item
  */
