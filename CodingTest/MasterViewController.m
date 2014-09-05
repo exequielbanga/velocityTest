@@ -58,8 +58,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//        NSDate *object = self.objects[indexPath.row];
-//        [(DetailViewController *)[[segue destinationViewController] topViewController] setDetailItem:object];
+        
+        Item *object = self.itemPaginator.items[indexPath.row];
+        [(DetailViewController *)[[segue destinationViewController] topViewController] setDetailItem:object];
     }
 }
 
@@ -113,6 +114,7 @@
         }else{
             [self.itemPaginator.items addObjectsFromArray:(NSArray *)response];
             [self.tableView reloadData];
+            
             for (Item *anItem in (NSArray *)response) {
                 [self getImageForItem:anItem];
             }

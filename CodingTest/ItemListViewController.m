@@ -45,10 +45,6 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(callService)];
-	self.navigationItem.rightBarButtonItem = addButton;
 
     if ([[[self.splitViewController.viewControllers lastObject] topViewController] isKindOfClass:[ItemDetailViewController class]]) {
 		self.itemDetailViewController = (ItemDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];

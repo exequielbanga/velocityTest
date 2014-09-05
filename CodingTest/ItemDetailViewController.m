@@ -8,6 +8,8 @@
 
 #import "ItemDetailViewController.h"
 #import "Item.h"
+#import "ImagesURLS.h"
+#import "UIImageView+SDWebImage_M13ProgressSuite.h"
 
 @interface ItemDetailViewController ()
 
@@ -42,17 +44,32 @@
 - (void)configureView {
 	// Update the user interface for the detail item.
 	if (self.detailItem) {
-        // ASADO: Poniendo todo lo correspondiente
-        // TODO: Poner la imagen
         self.itemTitleLabel.text = self.detailItem.title;
 
-        NSMutableAttributedString* quantityString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Quantity available: %@", [self.detailItem.quantity stringValue]]];
-        [quantityString setAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:20]} range:NSMakeRange(0, 19)];
-        self.itemQuantityLabel.attributedText = quantityString;
+        self.imageView.image = [UIImage imageNamed:@"placeholder"];
+        if (self.detailItem.images.count) {
+            ImagesURLS *urls = self.detailItem.images[0];
+            if (urls.big) {
+                [self.imageView setImageUsingProgressViewRingWithURL:[NSURL URLWithString:urls.big] placeholderImage:[UIImage imageNamed:@"placeholder"] options:0 progress:nil completed:nil ProgressPrimaryColor:[UIColor clearColor] ProgressSecondaryColor:[UIColor clearColor] Diameter:50.];
+            }
+        }
+        if (self.detailItem.quantity) {
+            NSMutableAttributedString* quantityString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Quantity available: %d", [self.detailItem.quantity unsignedIntValue]]];
+            [quantityString setAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:20]} range:NSMakeRange(0, 19)];
+            self.itemQuantityLabel.attributedText = quantityString;
+        }else{
+            self.itemQuantityLabel.attributedText = nil;
+            self.itemQuantityLabel.text = NSLocalizedString(@"No items left", nil);
+        }
 
-        NSMutableAttributedString* priceString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Price: %@", [self.detailItem.price stringValue]]];
-        [quantityString setAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:20]} range:NSMakeRange(0, 6)];
-        self.itemPriceLabel.attributedText = priceString;
+        if (self.detailItem.price) {
+            NSMutableAttributedString* priceString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Price: %.2f", [self.detailItem.price floatValue]]];
+            [priceString setAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:20]} range:NSMakeRange(0, 6)];
+            self.itemPriceLabel.attributedText = priceString;
+        }else{
+            self.itemPriceLabel.attributedText = nil;
+            self.itemPriceLabel.text = NSLocalizedString(@"No price", nil);
+        }
 
         self.itemDescriptionLabel.text = self.detailItem.itemDescription;
 	}
@@ -60,18 +77,10 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 	[self configureView];
 }
 
-// ASADO: Borraria esto
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-	// Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Split view
-
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController {
 	barButtonItem.title = NSLocalizedString(@"Master", @"Master");
 	[self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
@@ -79,13 +88,11 @@
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
-	// Called when the view is shown again in the split view, invalidating the button and popover controller.
 	[self.navigationItem setLeftBarButtonItem:nil animated:YES];
 	self.masterPopoverController = nil;
 }
 
 - (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
-	// Return YES to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
 	return YES;
 }
 
