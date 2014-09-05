@@ -84,17 +84,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JiQ-Xc-a08">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RW1-CW-3vq">
-                                        <rect key="frame" x="180" y="86" width="240" height="150"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="Yh0-jd-ZDi"/>
-                                            <constraint firstAttribute="height" constant="150" id="fPc-aK-Eq5"/>
-                                        </constraints>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="80" y="88" width="240" height="150"/>
-                                        </variation>
-                                    </imageView>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gta-FG-x9e">
                                         <rect key="frame" x="0.0" y="251" width="600" height="514"/>
                                         <subviews>
@@ -103,13 +92,16 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                                    <rect key="frame" x="10" y="10" width="380" height="21"/>
+                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXi-jc-sCX">
                                                 <rect key="frame" x="10" y="41" width="580" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                                     <rect key="frame" x="10" y="43" width="380" height="21"/>
                                                 </variation>
                                             </label>
@@ -118,7 +110,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                                     <rect key="frame" x="10" y="74" width="380" height="21"/>
                                                 </variation>
                                             </label>
@@ -128,7 +120,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                                     <rect key="frame" x="10" y="120" width="380" height="609"/>
                                                 </variation>
                                             </label>
@@ -149,13 +141,28 @@
                                             <constraint firstAttribute="trailing" secondItem="Muk-Ol-5zo" secondAttribute="trailing" constant="10" id="ujd-X2-Aij"/>
                                             <constraint firstItem="rXi-jc-sCX" firstAttribute="top" secondItem="se9-QL-hnJ" secondAttribute="bottom" constant="10" id="vjV-Zi-jmI"/>
                                         </constraints>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="231" width="400" height="737"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="0.0" y="267" width="400" height="739"/>
                                         </variation>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RW1-CW-3vq">
+                                        <rect key="frame" x="180" y="86" width="240" height="150"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="Yh0-jd-ZDi"/>
+                                            <constraint firstAttribute="height" constant="150" id="fPc-aK-Eq5"/>
+                                        </constraints>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="80" y="88" width="240" height="150"/>
+                                        </variation>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="gta-FG-x9e" firstAttribute="top" secondItem="RW1-CW-3vq" secondAttribute="bottom" constant="10" id="3Kl-sy-oqh"/>
+                                    <constraint firstItem="RW1-CW-3vq" firstAttribute="top" secondItem="JiQ-Xc-a08" secondAttribute="top" constant="73" id="DsO-pi-Fkk"/>
                                     <constraint firstAttribute="trailing" secondItem="gta-FG-x9e" secondAttribute="trailing" id="Mab-iJ-cYW"/>
                                     <constraint firstAttribute="centerX" secondItem="RW1-CW-3vq" secondAttribute="centerX" id="NEX-3n-LKX"/>
                                     <constraint firstItem="RW1-CW-3vq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JiQ-Xc-a08" secondAttribute="top" constant="10" id="aaf-JP-Zmq"/>
@@ -163,6 +170,19 @@
                                     <constraint firstAttribute="bottom" secondItem="gta-FG-x9e" secondAttribute="bottom" constant="10" id="eVd-0j-Mmu"/>
                                     <constraint firstItem="gta-FG-x9e" firstAttribute="leading" secondItem="JiQ-Xc-a08" secondAttribute="leading" id="m7V-8Q-NhA"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DsO-pi-Fkk"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="DsO-pi-Fkk"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                                </variation>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWf-pa-EK1">
                                 <rect key="frame" x="0.0" y="64" width="600" height="540"/>
@@ -194,6 +214,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="nRe-IL-dNB"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="RW1-CW-3vq" id="cqj-nS-x4r"/>
                         <outlet property="itemDescriptionLabel" destination="5fI-Wk-Db0" id="4Ff-Ck-suh"/>
