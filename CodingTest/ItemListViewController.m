@@ -65,10 +65,8 @@
 #pragma mark - Segues
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([[segue identifier] isEqualToString:@"showDetail"]) {
-		// ASADO: Ojo, que no quede asi comentado
 		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 //        NSDate *object = self.objects[indexPath.row];
-		// ASADO: Si lo vas a descomentar, primero preguntaria si es de la clase correcta
 //        [(DetailViewController *)[[segue destinationViewController] topViewController] setDetailItem:object];
 	}
 }

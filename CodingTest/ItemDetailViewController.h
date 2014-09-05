@@ -13,10 +13,8 @@
 /*!
  *  @brief  This view controller will display a detail of an item
  */
-// Asado: Cambiaria el nombre por ItemDetailViewController
 @interface ItemDetailViewController : UIViewController <UISplitViewControllerDelegate>
 
-// ASADO: id cambiado por item
 /*!
  *  @brief  Item to display
  */

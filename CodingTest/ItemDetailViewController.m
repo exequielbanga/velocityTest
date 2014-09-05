@@ -15,7 +15,6 @@
 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 
-// ASADO: Cambie los outlets
 @property (nonatomic, weak) IBOutlet UIImageView* imageView;
 @property (nonatomic, weak) IBOutlet UILabel* itemTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel* itemQuantityLabel;
@@ -30,7 +29,6 @@
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem {
-    self.noItemView.hidden = newDetailItem != nil;
 
     if (_detailItem != newDetailItem) {
 		_detailItem = newDetailItem;
@@ -75,7 +73,11 @@
         }
 
         self.itemDescriptionLabel.text = self.detailItem.itemDescription;
-	}
+        self.noItemView.hidden = YES;
+    }else{
+        self.noItemView.hidden = NO;
+    }
+
 }
 
 - (void)viewDidLoad {
