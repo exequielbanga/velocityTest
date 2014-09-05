@@ -17,10 +17,6 @@
 #import "MBProgressHUD.h"
 #import "Item.h"
 
-
-
-
-
 #define kCellReuseIdentifier @"itemCell"
 
 @interface ItemListViewController ()<UISearchBarDelegate>
@@ -194,8 +190,11 @@
 
 	self.itemDetailViewController.detailItem = self.itemPaginator.items[indexPath.row];
 
-    
-    [self showDetailViewController:[self.splitViewController.viewControllers lastObject] sender:nil];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        [self showDetailViewController:[self.splitViewController.viewControllers lastObject] sender:nil];
+    }else{
+        [self showDetailViewController:self.itemDetailViewController sender:nil];
+    }
 
 }
 

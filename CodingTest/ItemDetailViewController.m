@@ -21,6 +21,7 @@
 @property (nonatomic, weak) IBOutlet UILabel* itemQuantityLabel;
 @property (nonatomic, weak) IBOutlet UILabel* itemPriceLabel;
 @property (nonatomic, weak) IBOutlet UILabel* itemDescriptionLabel;
+@property (nonatomic, weak) IBOutlet UIView*  noItemView;
 
 @end
 
@@ -29,7 +30,9 @@
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem {
-	if (_detailItem != newDetailItem) {
+    self.noItemView.hidden = newDetailItem != nil;
+
+    if (_detailItem != newDetailItem) {
 		_detailItem = newDetailItem;
 
 		// Update the view.
