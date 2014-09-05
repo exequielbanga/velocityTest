@@ -10,8 +10,6 @@
 		EE4F54E3D4BC4F01BBB6F683 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D48A42F5344A57A4419E75 /* libPods.a */; };
 		F6850AC019B8902400E2B55B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F6850ABF19B8902400E2B55B /* main.m */; };
 		F6850AC319B8902400E2B55B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F6850AC219B8902400E2B55B /* AppDelegate.m */; };
-		F6850AC619B8902400E2B55B /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6850AC519B8902400E2B55B /* MasterViewController.m */; };
-		F6850AC919B8902400E2B55B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6850AC819B8902400E2B55B /* DetailViewController.m */; };
 		F6850ACC19B8902400E2B55B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6850ACA19B8902400E2B55B /* Main.storyboard */; };
 		F6850ACE19B8902400E2B55B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6850ACD19B8902400E2B55B /* Images.xcassets */; };
 		F6850ADA19B8902400E2B55B /* CodingTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6850AD919B8902400E2B55B /* CodingTestTests.m */; };
@@ -49,10 +47,6 @@
 		F6850ABF19B8902400E2B55B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F6850AC119B8902400E2B55B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F6850AC219B8902400E2B55B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F6850AC419B8902400E2B55B /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		F6850AC519B8902400E2B55B /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		F6850AC719B8902400E2B55B /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		F6850AC819B8902400E2B55B /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		F6850ACB19B8902400E2B55B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F6850ACD19B8902400E2B55B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F6850AD319B8902400E2B55B /* CodingTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodingTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,10 +218,6 @@
 				F6C56BD919B957B6009322EB /* ItemListViewController.m */,
 				F6850AC119B8902400E2B55B /* AppDelegate.h */,
 				F6850AC219B8902400E2B55B /* AppDelegate.m */,
-				F6850AC419B8902400E2B55B /* MasterViewController.h */,
-				F6850AC519B8902400E2B55B /* MasterViewController.m */,
-				F6850AC719B8902400E2B55B /* DetailViewController.h */,
-				F6850AC819B8902400E2B55B /* DetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -389,11 +379,9 @@
 				F6C56BDB19B957B6009322EB /* ItemListViewController.m in Sources */,
 				F6C56BB819B8E786009322EB /* GenericParser.m in Sources */,
 				F6C56BB119B8E3A0009322EB /* RestService.m in Sources */,
-				F6850AC619B8902400E2B55B /* MasterViewController.m in Sources */,
 				F6C56BBB19B8E7D4009322EB /* ListingsListParser.m in Sources */,
 				F6C56BCF19B943F7009322EB /* ImagesService.m in Sources */,
 				F6850AC019B8902400E2B55B /* main.m in Sources */,
-				F6850AC919B8902400E2B55B /* DetailViewController.m in Sources */,
 				F6C56BC919B8F7B8009322EB /* ItemPaginator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

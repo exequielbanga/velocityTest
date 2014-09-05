@@ -18,7 +18,7 @@
 #import "Item.h"
 
 #define kCellReuseIdentifier @"itemCell"
-
+#define kTimeBetweenServiceCalls .25
 @interface ItemListViewController ()<UISearchBarDelegate>
 @property (nonatomic,strong)ListingsService *service;
 @property (nonatomic,strong)ItemPaginator *itemPaginator;
@@ -62,18 +62,7 @@
 	[self callService];
 }
 
-#pragma mark - Segues
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([[segue identifier] isEqualToString:@"showDetail"]) {
-		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//        NSDate *object = self.objects[indexPath.row];
-//        [(DetailViewController *)[[segue destinationViewController] topViewController] setDetailItem:object];
-	}
-}
-
-
 #pragma mark - AditionalViews
-
 - (void)showLoadingMessage {
     if (!self.loadingHUD) {
         self.loadingHUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -123,8 +112,10 @@
         }else{
             [self.itemPaginator.items addObjectsFromArray:(NSArray *)response];
             [self.tableView reloadData];
-            for (Item *anItem in (NSArray *)response) {
-                [self getImageForItem:anItem];
+            NSArray *items = (NSArray *)response;
+            for (NSInteger i = 0; i < items.count; i++) {
+                Item *anItem = items[i];
+                [self performSelector:@selector(getImageForItem:) withObject:anItem afterDelay:i*kTimeBetweenServiceCalls];
             }
         }
     }];
@@ -134,11 +125,15 @@
     if (!self.imagesServices) {
         self.imagesServices = [NSMutableDictionary new];
     }
-    ImagesService *service = self.imagesServices[anItem];
+    ImagesService *service = self.imagesServices[anItem.itemId];
     if (!service) {
         service = [ImagesService new];
+        [self.imagesServices setObject:service forKey:anItem.itemId];
         [service getImagesForItem:anItem withBlock:^(NSObject *response, NSError * error){
-            anItem.images  = (NSArray *)response;
+            if (response) {
+                anItem.images  = (NSArray *)response;
+            }
+            [self.imagesServices removeObjectForKey:anItem.itemId];
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.itemPaginator.items indexOfObject:anItem] inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         }];
     }
@@ -148,7 +143,7 @@
     ImagesService *service = self.imagesServices[anItem];
     if (service) {
         [service invalidate];
-        [self.imagesServices removeObjectForKey:anItem];
+        [self.imagesServices removeObjectForKey:anItem.itemId];
     }
 }
 
@@ -178,11 +173,6 @@
 	return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Return NO if you do not want the specified item to be editable.
-	return YES;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 
@@ -204,6 +194,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [self.searchBar resignFirstResponder];
     //Cleanup the last search
+    [self.class cancelPreviousPerformRequestsWithTarget:self selector:@selector(getImageForItem:) object:nil];
     for (Item *anItem in self.itemPaginator.items) {
         [self cancelGetImageForItem:anItem];
     }
